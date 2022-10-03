@@ -2,6 +2,13 @@
 
 $err = "";
 
+/*  KLE locations
+  0  8  2
+  6  9  7
+  1  10 3
+  4  11 5
+*/
+
 $a_map = array(
   0 => array( 0,  8,  2,     6,  9,  7,     1, 10,  3,     4, 11,  5),
   1 => array(-1,  0, -1,    -1,  6, -1,    -1,  1, -1,     4, 11,  5),
@@ -36,10 +43,13 @@ if (isset($_REQUEST['raw'])) {
 
     $row_c = 0;
     $pos_y = 0.0;
-    $a = 7;
+    $a = 4;
     $cnt = 0;
     $idy = 0;
     $color = '#000000';
+    $text = '#000000';
+    $m_rows = 0;
+    $m_cols = 0;
 
     foreach ($root as $row) {
       if (is_array($row)) {
@@ -54,6 +64,7 @@ if (isset($_REQUEST['raw'])) {
           if (is_object($entry)) {
             $entry = json_decode(json_encode($entry), true);
             if (isset($entry['c'])) $color = $entry['c'];
+            if (isset($entry['t'])) $text = $entry['t'];
             if (isset($entry['x'])) $move_x = $entry['x'];
             if (isset($entry['y'])) $move_y = $entry['y'];
             if (isset($entry['w'])) $width = $entry['w'];
@@ -71,19 +82,12 @@ if (isset($_REQUEST['raw'])) {
             $item = array();
             $item['i'] = $cnt;
 
-            /*  KLE locations
-                0  8  2
-                6  9  7
-                1  10 3
-                4  11 5
-            */
-
             $item['a'] = $a;
             $item['w'] = $width;
             $item['h'] = $height;
-            $item['t'] = array();
-            for ($i = 0; $i <= 12; $i++) $item['t'][] = '';  // fill with 12 blanks
 
+            $item['_'] = array();
+            for ($i = 0; $i <= 12; $i++) $item['_'][] = '';  // fill with 12 blanks
             $content = explode('·', $entry, 12);
             /* 0 1 2
                3 4 5
@@ -92,8 +96,37 @@ if (isset($_REQUEST['raw'])) {
             for ($i = 0; $i <= (count($content)-1); $i++) {
               $x = array_search($i, $a_map[$a]);
               if ($x !== false) {
-                $item['t'][$x] = $content[$i];
+                $item['_'][$x] = $content[$i];
               }
+            }
+
+            // check if top left is matrix row,col
+            if ($item['_'][0] != '') {
+              $m = explode(',', $item['_'][0]);
+              if (count($m) == 2) {
+                $item['m'] = $m;
+                if ($m[0] > $m_rows) $m_rows = $m[0];
+                if ($m[1] > $m_cols) $m_cols = $m[1];
+              }
+            }
+
+            // check if bottom right is group,option numbers
+            if ($item['_'][0] != '') {
+              $g = explode(',', $item['_'][11]);
+              if (count($g) == 2) {
+                $item['o'] = $g;
+              }
+            }
+
+            // check if rotary encoder
+            if (($item['_'][4] != '') && (str_starts_with($item['_'][4], 'e'))) {
+              $s = substr($item['_'][4], 1);
+              if (empty($s)) {
+                $i = 0;
+              } else {
+                $i = intval($s);
+              }
+              $item['e'] = $i;
             }
 
             $pos_x += $move_x;
@@ -102,6 +135,7 @@ if (isset($_REQUEST['raw'])) {
             $item['x'] = $pos_x;
             $item['y'] = $pos_y;
             $item['c'] = $color;
+            $item['t'] = $text;
 
             $data[] = $item;
 
@@ -131,6 +165,11 @@ if (isset($_REQUEST['raw'])) {
       $idy += 1;
       $pos_y += 1.0;
     }  // foreeach row
+
+    if (count($data) > 0) {
+      // first key will have the matrix size
+      $data[0]['n'] = array($m_rows + 1, $m_cols + 1);
+    }
 
   } else {
     $err = 'Root is not an array';
