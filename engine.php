@@ -25,11 +25,14 @@ if (isset($_REQUEST['raw'])) {
   // var_dump($raw);
 
   $raw = str_replace(
-    ['a:', 'c:', 'x:', 'y:', 'w:', 'h:', '\n'],
-    ['"a":', '"c":', '"x":', '"y":', '"w":', '"h":', '·'],
+    ['a:', 'c:', 'x:', 'y:', 'w:', 'h:', 'd:', 'n:',  '\n', ':true', ':false'],
+    ['"a":', '"c":', '"x":', '"y":', '"w":', '"h":', '"d":', '"n":',  '·', ':1', ':0'],
     $raw
   );
+  
+  // echo '<textarea>';
   // var_dump($raw);
+  // echo '</textarea>';
 
   // echo '<hr>';
 
@@ -50,6 +53,7 @@ if (isset($_REQUEST['raw'])) {
     $text = '#000000';
     $m_rows = 0;
     $m_cols = 0;
+    $decal_next = false;
 
     foreach ($root as $row) {
       if (is_array($row)) {
@@ -75,8 +79,10 @@ if (isset($_REQUEST['raw'])) {
                 $err = 'The "a" value is out of range';
                 break 2;
               }
-            } 
+            }
+            if (isset($entry['d']) && ($entry['d'] == 1)) $decal_next = true;
             // echo "O";  // var_dump($entry);
+
           } elseif (is_string($entry)) {
 
             $item = array();
@@ -137,6 +143,13 @@ if (isset($_REQUEST['raw'])) {
             $item['c'] = $color;
             $item['t'] = $text;
 
+            if ($decal_next) {
+              $decal_next = false;
+              $item['d'] = true;
+            }
+
+            /* assignment */
+
             $data[] = $item;
 
             // echo '[' . $entry . '] ';
@@ -173,6 +186,18 @@ if (isset($_REQUEST['raw'])) {
 
   } else {
     $err = 'Root is not an array';
+
+    echo '<p class="text-danger">JSON Decode Error - ';
+    switch (json_last_error()) {
+      case JSON_ERROR_NONE:           echo '?none'; break;
+      case JSON_ERROR_DEPTH:          echo 'Maximum stack depth exceeded'; break;
+      case JSON_ERROR_STATE_MISMATCH: echo 'Underflow or the modes mismatch'; break;
+      case JSON_ERROR_CTRL_CHAR:      echo 'Unexpected control character found'; break;
+      case JSON_ERROR_SYNTAX:         echo 'Syntax error, malformed JSON'; break;
+      case JSON_ERROR_UTF8:           echo 'Malformed UTF-8 characters, possibly incorrectly encoded'; break;
+      default:                        echo 'Unknown error'; break;
+    }
+    echo '</p>';
   }
 
   // echo '<br><small><pre><b>$data</b> = '; var_dump($data); echo '</pre></small>';
