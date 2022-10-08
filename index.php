@@ -1,6 +1,6 @@
 <?php
 
-// @include 'engine.php';
+global $err, $data, $meta;
 
 /**
  * @see: https://fontawesome.com/v5/search?o=r&m=free
@@ -17,9 +17,9 @@ function __v($val, $def = null, $echo = false) {
   else return $ret;
 }
 
+$default = null;
 ob_start();
-?>
-[{c:"#777777"},"0,0\n\n\n\n0\n\n\n\n\n\nEsc",{x:0.5,c:"#aaaaaa"},"0,1\n\n\n\n1\n\n\n\n\n\nF1","0,2\n\n\n\n2\n\n\n\n\n\nF2","0,3\n\n\n\n3\n\n\n\n\n\nF3","0,4\n\n\n\n4\n\n\n\n\n\nF4",{x:0.25},"0,5\n\n\n\n5\n\n\n\n\n\nF5","0,6\n\n\n\n6\n\n\n\n\n\nF6","0,7\n\n\n\n7\n\n\n\n\n\nF7","0,8\n\n\n\n8\n\n\n\n\n\nF8",{x:0.25},"0,9\n\n\n\n9\n\n\n\n\n\nF9","0,10\n\n\n\n10\n\n\n\n\n\nF10","0,11\n\n\n\n11\n\n\n\n\n\nF11","0,12\n\n\n\n12\n\n\n\n\n\nF12",{x:0.25},"0,13\n\n\n\n13\n\n\n\n\n\nDel","0,14\n\n\n\n14\n\n\n\n\n\nEnd","0,15\n\n\n\n15\n\n\n\n\n\nPgUp","0,16\n\n\n\n16\n\n\n\n\n\nPgDn",{x:0.25},"0,17\n\n\n\n\n\nVol-\nVol+\n\ne0\nMute"],
+?>[{c:"#777777"},"0,0\n\n\n\n0\n\n\n\n\n\nEsc",{x:0.5,c:"#aaaaaa"},"0,1\n\n\n\n1\n\n\n\n\n\nF1","0,2\n\n\n\n2\n\n\n\n\n\nF2","0,3\n\n\n\n3\n\n\n\n\n\nF3","0,4\n\n\n\n4\n\n\n\n\n\nF4",{x:0.25},"0,5\n\n\n\n5\n\n\n\n\n\nF5","0,6\n\n\n\n6\n\n\n\n\n\nF6","0,7\n\n\n\n7\n\n\n\n\n\nF7","0,8\n\n\n\n8\n\n\n\n\n\nF8",{x:0.25},"0,9\n\n\n\n9\n\n\n\n\n\nF9","0,10\n\n\n\n10\n\n\n\n\n\nF10","0,11\n\n\n\n11\n\n\n\n\n\nF11","0,12\n\n\n\n12\n\n\n\n\n\nF12",{x:0.25},"0,13\n\n\n\n13\n\n\n\n\n\nDel","0,14\n\n\n\n14\n\n\n\n\n\nEnd","0,15\n\n\n\n15\n\n\n\n\n\nPgUp","0,16\n\n\n\n16\n\n\n\n\n\nPgDn",{x:0.25},"0,17\n\n\n\n\n\nVol-\nVol+\n\ne0\nMute"],
 [{y:0.25,c:"#cccccc"},"1,0\n\n\n\n17\n\n\n\n\n\n~`","1,1\n\n\n\n18\n\n\n\n\n\n1!","1,2\n\n\n\n19\n\n\n\n\n\n2@","1,3\n\n\n\n20\n\n\n\n\n\n3#","1,4\n\n\n\n21\n\n\n\n\n\n4$","1,5\n\n\n\n22\n\n\n\n\n\n5%","1,6\n\n\n\n23\n\n\n\n\n\n6^","1,7\n\n\n\n24\n\n\n\n\n\n7&","1,8\n\n\n\n25\n\n\n\n\n\n8*","1,9\n\n\n\n26\n\n\n\n\n\n9(","1,10\n\n\n\n27\n\n\n\n\n\n0)","1,11\n\n\n\n28\n\n\n\n\n\n-_","1,12\n\n\n\n29\n\n\n\n\n\n=+",{c:"#aaaaaa",w:2},"1,13\n\n\n\n30\n\n\n\n\n\nBacksp",{c:"#cccccc",a:7,w:0.5,d:true},"N",{c:"#aaaaaa",a:4},"1,14\n\n\n\n31\n\n\n\n\n\nNum-L",{c:"#cccccc"},"1,15\n\n\n\n32\n\n\n\n\n\n/","1,16\n\n\n\n33\n\n\n\n\n\n*","1,17\n\n\n\n34\n\n\n\n\n\n-"],
 [{c:"#aaaaaa",w:1.5},"2,0\n\n\n\n35\n\n\n\n\n\nTab",{c:"#cccccc"},"2,1\n\n\n\n36\n\n\n\n\n\nQ","2,2\n\n\n\n37\n\n\n\n\n\nW","2,3\n\n\n\n38\n\n\n\n\n\nE","2,4\n\n\n\n39\n\n\n\n\n\nR","2,5\n\n\n\n40\n\n\n\n\n\nT","2,6\n\n\n\n41\n\n\n\n\n\nY","2,7\n\n\n\n42\n\n\n\n\n\nU","2,8\n\n\n\n43\n\n\n\n\n\nI","2,9\n\n\n\n44\n\n\n\n\n\nO","2,10\n\n\n\n45\n\n\n\n\n\nP","2,11\n\n\n\n46\n\n\n\n\n\n[{","2,12\n\n\n\n47\n\n\n\n\n\n]}",{w:1.5},"2,13\n\n\n\n48\n\n\n\n\n\n\\|",{a:7,w:0.5,d:true},"S",{a:4},"2,14\n\n\n\n49\n\n\n\n\n\n7","2,15\n\n\n\n50\n\n\n\n\n\n8","2,16\n\n\n\n51\n\n\n\n\n\n9",{h:2},"2,17\n\n\n\n52\n\n\n\n\n\n+"],
 [{c:"#aaaaaa",w:1.75},"3,0\n\n\n\n53\n\n\n\n\n\nCaps-L",{c:"#cccccc"},"3,1\n\n\n\n54\n\n\n\n\n\nA","3,2\n\n\n\n55\n\n\n\n\n\nS","3,3\n\n\n\n56\n\n\n\n\n\nD",{n:true},"3,4\n\n\n\n57\n\n\n\n\n\nF","3,5\n\n\n\n58\n\n\n\n\n\nG","3,6\n\n\n\n59\n\n\n\n\n\nH",{n:true},"3,7\n\n\n\n60\n\n\n\n\n\nJ","3,8\n\n\n\n61\n\n\n\n\n\nK","3,9\n\n\n\n62\n\n\n\n\n\nL","3,10\n\n\n\n63\n\n\n\n\n\n;:","3,11\n\n\n\n64\n\n\n\n\n\n'\"",{c:"#777777",w:2.25},"3,13\n\n\n\n65\n\n\n\n\n\nEnter",{c:"#cccccc",a:7,w:0.5,d:true},"C",{a:4},"3,14\n\n\n\n66\n\n\n\n\n\n4",{n:true},"3,15\n\n\n\n67\n\n\n\n\n\n5","3,16\n\n\n\n68\n\n\n\n\n\n6"],
@@ -42,21 +42,34 @@ ob_end_clean();
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vinorodrigues/bootstrap-dark@0.6.1/dist/bootstrap-dark.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">    
 
     <title>Keyboard File Generator</title>
 
     <style>
-      .svg-wrapper {
-        padding: 1rem;
-      }
-      .the-svg {
+      .svg {
         max-width: 100% !important;
         height: auto !important;
-        zoom: 0.32;
+      }
+
+      .token.comment {
+        font-style: italic;
+      }
+
+      code[class*="language-"], 
+      pre[class*="language-"] {
+        max-height: 360px;
+        font-size: 0.8rem !important;
+        line-height: 1.2;
       }
     </style>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
   </head>
   <body>
 
@@ -74,15 +87,17 @@ ob_end_clean();
       </div>
     </nav>
 
-    <div class="container my-3">
+    <div class="container my-3 border-bottom mb-3 pb-3">
 
-      <form action="." method="post" enctype="multipart/form-data" accept=".json" autocomplete="off">
+      <form action="." method="post" enctype="multipart/form-data" accept=".json" autocomplete="off" name="initial">
 
-        <div class="form-group">
-          <label for="file">Keyboard Layout Editor exported <code>JSON</code> file:</label>
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="file">
-            <label class="custom-file-label" for="file">Choose file...</label>
+        <div class="form-group row">
+          <label for="file" class="col-sm-6 col-form-label">Keyboard Layout Editor exported <code>JSON</code> file:</label>
+          <div class="col-sm-6">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="file" name="file">
+              <label class="custom-file-label" for="file" id="file_label">Choose file...</label>
+            </div>
           </div>
         </div>
 
@@ -106,15 +121,21 @@ ob_end_clean();
           <div class="col-md-6">
 
             <div class="form-group">
-              <label for="bname">Board Name</label>
-              <input type="text" class="form-control" id="bname" name="bname" value="<?= __v('bname') ?>" placeholder="Board Name" autocomplete="off" data-lpignore="true">
-              <small id="bname" class="form-text text-muted">This is the board name as displayed on VIA's top right corner.</small>
+              <label for="name">Board Name</label>
+              <input type="text" class="form-control" id="name" name="name" value="<?= __v('name') ?>" placeholder="Board Name" autocomplete="off" data-lpignore="true">
+              <small id="name" class="form-text text-muted">This is the board name as displayed on VIA's top right corner.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="manuf">Manufacturer</label>
+              <input type="text" class="form-control" id="manuf" name="manuf" value="<?= __v('manuf') ?>" placeholder="Manufacturer" autocomplete="off" data-lpignore="true">
+              <small id="manuf" class="form-text text-muted">English name of the Vendor</small>
             </div>
 
             <div class="form-group row">
               <label for="vid" class="col-sm-3 col-form-label">Vendor ID</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="vid" name="vid" value="<?= __v('vid') ?>" placeholder="VID" autocomplete="off" data-lpignore="true">
+                <input type="text" class="form-control" id="vid" name="vid" value="<?= __v('vid') ?>" placeholder="VID" maxlength="4" autocomplete="off" data-lpignore="true">
                 <small id="vid" class="form-text text-muted">Use a 4-digit hex code, e.g. <code>FEED</code></small>
               </div>
             </div>
@@ -122,7 +143,7 @@ ob_end_clean();
             <div class="form-group row">
               <label for="pid" class="col-sm-3 col-form-label">Product ID</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="pid" name="pid" value="<?= __v('pid') ?>" placeholder="PID">
+                <input type="text" class="form-control" id="pid" name="pid" value="<?= __v('pid') ?>" placeholder="PID" maxlength="4" autocomplete="off" data-lpignore="true">
                 <small id="pid" class="form-text text-muted">Use a 4-digit hex code, e.g. <code>0123</code></small>
               </div>
             </div>
@@ -140,75 +161,130 @@ ob_end_clean();
               </div>
             </div>
 
-
           </div>
           <div class="col-md-6">
 
             <div class="form-group">
               <label for="url">URL</label>
-              <input type="text" class="form-control" id="url" name="url" value="<?= __v('url') ?>" placeholder="URL">
+              <input type="url" class="form-control" id="url" name="url" value="<?= __v('url') ?>" placeholder="URL">
               <small id="url" class="form-text text-muted">URL to the board as displayed in the <code>info.json</code> file.</small>
             </div>
 
             <div class="form-group">
-              <label for="mname">Maintainer Name</label>
-              <input type="text" class="form-control" id="mname" name="mname" value="<?= __v('mname') ?>" placeholder="Maintainer Name">
-              <small id="mname" class="form-text text-muted">The maintainers real name, not GitHub handle.</small>
+              <label for="author">Maintainer Name</label>
+              <input type="text" class="form-control" id="author" name="author" value="<?= __v('author') ?>" placeholder="Maintainer Name">
+              <small id="author" class="form-text text-muted">The maintainers English name, not GitHub handle.</small>
             </div>
 
             <div class="form-group">
-              <label for="mhandle">Maintainer Handle</label>
-              <input type="text" class="form-control" id="mhandle" name="mhandle" value="<?= __v('mhandle') ?>" placeholder="Maintainer Handle">
-              <small id="mhandle" class="form-text text-muted">The maintainers GitHub handle / username.</small>
+              <label for="handle">Maintainer Handle</label>
+              <input type="text" class="form-control" id="handle" name="handle" value="<?= __v('handle') ?>" placeholder="Maintainer Handle">
+              <small id="handle" class="form-text text-muted">The maintainers GitHub handle / username.</small>
             </div>
 
           </div>
         </div>
 
+        <hr>
         <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Generate File Parts</button>
       </form>
-
-      <hr>
-
-      <?php
-        /* ╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋ */
-        include 'engine.php';
-        /* ╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋ */
-
-        // $serial = serialize($data);
-        // $getter = urlencode($serial);
-
-        if (isset($_REQUEST['raw']) && !empty($_REQUEST['raw'])) {
-          ?><h2>SVG</h2><?php
-
-          include 'svg.php';
-
-          // echo '<hr>';
-
-          // echo '<pre>'; var_dump($data); echo '</pre>';
-
-          ?><h2>QMK <code>info.json</code></h2><?php
-          ?><h2>Keyboard <code>kb.h</code></h2><?php
-          ?><h2>Keyboard <code>kb.c</code></h2><?php
-          ?><h2>Keymap VIA <code>keymap.c</code></h2><?php
-          ?><h2>VIA <code>kb.json</code></h2><?php
-          ?><h2>Vial <code>vial.json</code></h2><?php
-          ?><h2>Vial <code>config.h</code></h2><?php
-
-        }
-
-        // echo "<p>";
-
-        // var_dump($data);
-
-      ?>
-
     </div>
+
+
+<?php
+  include 'engine.php';
+
+  if (isset($data) && !empty($data)) {
+
+    ?><div class="container my-3"><form method="post" autocomplete="off" name="dataload"><div class="row row-col-1"><?php
+
+    ?>
+      <input type="hidden" id="data" name="data" value="<?= base64_encode(serialize($data)) ?>">
+      <input type="hidden" id="meta" name="meta" value="<?= base64_encode(serialize($meta)) ?>">
+    <?php
+
+    function generate_output($title, $filename, $pre = '', $suf = '', $inj = '') {
+      ?><div class="col-12 border-bottom mb-3 pb-3"><h2><?= $title ?></h2><?php
+      if (!empty($pre)) echo $pre;
+      include $filename;
+      if (!empty($suf)) echo $suf;
+      ?><p class="mt-2"><?php
+      if (!empty($inj)) echo $inj;
+      ?><button formaction="<?= $filename ?>" class="btn btn-secondary"><i class="fas fa-cloud-download-alt"></i> Download</button>
+      </p></div><?php
+    }
+
+    function generate_output_code($title, $filename, $lang, $text_id) {
+      generate_output(
+        $title,
+        $filename,
+        '<pre class="shadow-sm"><code class="language-' . $lang . '" id="' . $text_id . '">',
+        '</code></pre>',
+        '<button type="button" class="btn btn-success copy-btn" data-clipboard-target="#' . $text_id . '"><i class="far fa-clipboard"></i> Copy</button> '
+      );
+    }
+
+    generate_output('SVG', 'svg.php', '<div class="img-thumbnail shadow-sm rounded">', '</div>');
+    generate_output_code('QMK <code>info.json</code>',       'info.json.php', 'json', 'info_json');
+    generate_output_code('Keyboard <code>kb.c</code></h2>',  'kb.c.php',      'c',    'kb_c');
+    // generate_output_code('Keymap VIA <code>keymap.c</code>', 'keymap.c.php',  'c',    'keymap_c');
+    // generate_output_code('VIA <code>kb.json</code>',         'via.json.php',  'json', 'via_json');
+    // generate_output_code('Vial <code>vial.json</code>',      'vial.json.php',  'json', 'vial_json');
+    // generate_output_code('Vial <code>config.h</code>',       'vial.config.h.php', 'c', 'vial_config_h');
+
+    ?></div></form></div><?php
+  }
+?>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+    <script defer>
+      function onLoad() {
+        // console.log("Loaded");
+
+        // window.Prism = window.Prism || {};
+        // window.Prism.manual = true;
+
+        new ClipboardJS('.copy-btn');
+       
+        document.getElementById('file').addEventListener("change", function(){
+          var file_item = document.getElementById('file');
+          var file_label = document.getElementById('file_label');
+          file_label.innerHTML = file_item.files[0].name;
+        } );
+      }
+
+      // function copyToClipboard(id) {
+      //   var element = document.getElementById(id);
+      //   var text = element.innerText;
+
+      //   if (window.clipboardData && window.clipboardData.setData) {
+      //     // IE specific code path to prevent textarea being shown while dialog is visible.
+      //     return clipboardData.setData("Text", text); 
+      //   } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+      //     var textarea = document.createElement("textarea");
+      //     textarea.textContent = text;
+      //     textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+      //     document.body.appendChild(textarea);
+      //     textarea.select();
+      //     try {
+      //       return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+      //     } catch (ex) {
+      //       console.warn("Copy to clipboard failed.", ex);
+      //       return false;
+      //     } finally {
+      //       document.body.removeChild(textarea);
+      //     }
+      //   }
+      // }      
+
+      document.addEventListener("DOMContentLoaded", function(){
+        onLoad();
+      });      
     </script>
   </body>
 </html>
