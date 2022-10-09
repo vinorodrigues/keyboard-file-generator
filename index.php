@@ -1,5 +1,7 @@
 <?php
 
+define('GITHUB_URL', 'https://github.com/vinorodrigues/keyboard-file-generator/');
+define('GITHUB_FILE', GITHUB_URL . '/blob/main/');
 global $err, $data, $meta;
 
 /**
@@ -206,7 +208,14 @@ ob_end_clean();
     function generate_output($title, $filename, $pre = '', $suf = '', $inj = '') {
       ?><div class="col-12 border-bottom mb-3 pb-3"><h2><?= $title ?></h2><?php
       if (!empty($pre)) echo $pre;
-      include $filename;
+      $p = strpos($filename, '?');
+      if (false === $p) {
+        include( $filename );;
+      } else {
+        $inc_file = substr($filename, 0, $p);
+        $GLOBALS[substr($filename, $p+1)] = true;
+        include( $inc_file );
+      }
       if (!empty($suf)) echo $suf;
       ?><p class="mt-2"><?php
       if (!empty($inj)) echo $inj;
@@ -227,14 +236,43 @@ ob_end_clean();
     generate_output('SVG', 'svg.php', '<div class="img-thumbnail shadow-sm rounded">', '</div>');
     generate_output_code('QMK <code>info.json</code>',       'info.json.php', 'json', 'info_json');
     generate_output_code('Keyboard <code>kb.c</code></h2>',  'kb.c.php',      'c',    'kb_c');
-    // generate_output_code('Keymap VIA <code>keymap.c</code>', 'keymap.c.php',  'c',    'keymap_c');
-    // generate_output_code('VIA <code>kb.json</code>',         'via.json.php',  'json', 'via_json');
-    // generate_output_code('Vial <code>vial.json</code>',      'vial.json.php',  'json', 'vial_json');
-    // generate_output_code('Vial <code>config.h</code>',       'vial.config.h.php', 'c', 'vial_config_h');
+    // generate_output_code('Keymap VIA <code>keymap.c</code>', 'keymap.c.php',  'c',    'keymap_c');  // TODO
+    generate_output_code('VIA <code>kb.json</code>',         'via.json.php',  'json', 'via_json');
+    generate_output_code('Vial <code>vial.json</code>',      'via.json.php?vial',  'json', 'vial_json');
+    // generate_output_code('Vial <code>config.h</code>',       'vial.config.h.php', 'c', 'vial_config_h');  // TODO
 
     ?></div></form></div><?php
   }
 ?>
+
+    <?php 
+      function copy_year($from) {
+        $ret = $from;
+        if ($from != date("Y")) $ret .= '-' . date("Y");
+        return $ret;
+      }
+    ?>
+    <!-- * ------
+        * Footer
+        * ------
+    -->
+    <footer class="bg-light py-2">
+    <div class="container bg-light" id="footer">
+      <div class="row">
+        <div class="text-muted col">
+          <b>Keyboard File Generator</b> (<a href="<?= GITHUB_FILE ?>changelog.md" target="_blank">changelog</a>)<br>
+          Copyright &copy; <?= copy_year(2022) ?> &mdash; Vino Rodrigues (<a href="<?= GITHUB_FILE ?>contributors.md" target="_blank">and contributors</a>)<br>
+          All rights reserved. (<a href="<?= GITHUB_FILE ?>LICENSE.md" target="_blank">LICENSE</a>)
+        </div>
+        <div clas="col"><div class="text-right text-muted">
+          <a href="<?= GITHUB_FILE ?>README.md" target="_blank"><i class="fas fa-question-circle"></i> Help</a><br>
+          <a href="<?= GITHUB_URL ?>issues" target="_blank"><i class="fas fa-bug"></i> Found a bug?</a><br>
+          <a href="<?= GITHUB_URL ?>" target="_blank"><i class="fab fa-github-alt"></i> Code hosted on GitHub</a><br>
+          <i class="fas fa-server"></i> Site hosted on privately funded servers
+        </div></div>
+      </div>
+    </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -246,9 +284,6 @@ ob_end_clean();
       function onLoad() {
         // console.log("Loaded");
 
-        // window.Prism = window.Prism || {};
-        // window.Prism.manual = true;
-
         new ClipboardJS('.copy-btn');
        
         document.getElementById('file').addEventListener("change", function(){
@@ -257,30 +292,6 @@ ob_end_clean();
           file_label.innerHTML = file_item.files[0].name;
         } );
       }
-
-      // function copyToClipboard(id) {
-      //   var element = document.getElementById(id);
-      //   var text = element.innerText;
-
-      //   if (window.clipboardData && window.clipboardData.setData) {
-      //     // IE specific code path to prevent textarea being shown while dialog is visible.
-      //     return clipboardData.setData("Text", text); 
-      //   } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-      //     var textarea = document.createElement("textarea");
-      //     textarea.textContent = text;
-      //     textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
-      //     document.body.appendChild(textarea);
-      //     textarea.select();
-      //     try {
-      //       return document.execCommand("copy");  // Security exception may be thrown by some browsers.
-      //     } catch (ex) {
-      //       console.warn("Copy to clipboard failed.", ex);
-      //       return false;
-      //     } finally {
-      //       document.body.removeChild(textarea);
-      //     }
-      //   }
-      // }      
 
       document.addEventListener("DOMContentLoaded", function(){
         onLoad();

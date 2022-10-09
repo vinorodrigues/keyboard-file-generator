@@ -41,7 +41,7 @@ function do_led_matrix(&$data, &$matrix) {
 
   $_r = count($matrix);
   $_c = count($matrix[0]);
-  $_t = count_keys($data);
+  $_t = count_led_keys($data);
   if ($_t < 100) { $_p = 2; } else { $_p = 3; }
 
   $p = 0;
@@ -160,7 +160,7 @@ if (!$is_inline) {
   header('Content-Disposition: attachment; filename="kb.c"');
 }
 
-$has_led = count_keys($data, false);
+$has_led = count_led_keys($data, false);
 
 if (!isset($matrix) || !is_array($matrix)) 
   $matrix = build_matrix($data);

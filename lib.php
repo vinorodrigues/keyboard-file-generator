@@ -23,8 +23,10 @@ function _empty(&$var) {
 }
 
 function go_to_die() {
-  echo 'No data';
-  die();
+  header("HTTP/1.1 500 Server Error");
+  http_response_code(500);
+  @include '500.html';
+  exit();
 }
 
 function get_meta($name) {
@@ -36,7 +38,7 @@ function get_meta($name) {
   }
 }
 
-function count_keys(&$data, $return_full_count = true) {
+function count_led_keys(&$data, $return_full_count = true) {
   $cnt = 0;
   foreach ($data as $item) {
     if (!_empty( $item['_'][10] )) $cnt++;
