@@ -19,13 +19,13 @@ The format of this data is dependant on the location of the text, and that can b
 
 *Where:*
 
-0. The matrix coordinates in the format of `{row},{column}`. e.g. `3,13` = 4th row *(starting at 0)*, 14th column.
-3. *The text to show in the image for counter clockwise rotation of the rotary encoder.*
-4. *An "e" character here representing a rotary encoder if appropriate.*
-5. *The text to show in the image for lockwise rotation of the rotary encoder.*
-7. The text to show in the image for the key legend.
-10. The numeric LED number **(starting at 0)**
+* **-0-** The matrix coordinates in the format of `{row},{column}`. e.g. `3,13` = 4th row *(starting at 0)*, 14th column.
+* **-3-** *The text to show in the image for counter clockwise rotation of the rotary encoder.*
+* **-4-** *An "e" character here representing a rotary encoder if appropriate.*
+* **-5-** *The text to show in the image for lockwise rotation of the rotary encoder.*
+* **-7-** The text to show in the image for the key legend.
+* **-10-** The numeric LED number **(starting at 0)**
 
-- all others are ignored
+* all others are ignored
 
 ***Note:***: The tool has very minimal error handling - so if you're doing something wrong it will likely not tell you what it is.
