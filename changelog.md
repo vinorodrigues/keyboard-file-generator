@@ -6,8 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Everything.  **It's still a WIP**
+- Rotary encoder support
+
+## [1.0.0] - 2022-10-10
+### Added
+- Initial release, [keyboard-file-generator.com]
 
 
 
+[keyboard-file-generator.com]: https://keyboard-file-generator.com
 [Unreleased]: https://github.com/vinorodrigues/keyboard-file-generator/
+[1.0.0]: https://github.com/vinorodrigues/keyboard-file-generator/

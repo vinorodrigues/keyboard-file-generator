@@ -1,25 +1,29 @@
 <?php
 
-function __(&$d) {
+function _empty(&$var) {
+  return (empty($var) && ($var !== '0'));
+}
+
+function __($d, $length = -1, $pad_string = ' ', $pad_type = STR_PAD_RIGHT) {
+  $ret = '';
   if (isset($d)) {
     if (!empty($d)) {
-      return $d;
+      $ret = $d;
+    } elseif (is_numeric($d)) {
+      $ret = 0;
     } else {
-      return '??';
+      $ret = '??';
     }
   } else {
-    return '!!';
+    $ret = '!!';
   }
+  return str_pad($ret, $length, $pad_string, $pad_type);
 }
 
 function _t($n = 1) {
   $res = '';
   for ($i=0; $i < $n; $i++) $res .= '    ';
   return($res);
-}
-
-function _empty(&$var) {
-  return (empty($var) && ($var !== '0'));
 }
 
 function go_to_die() {
@@ -49,4 +53,12 @@ function count_led_keys(&$data, $return_full_count = true) {
   } else {
     return $cnt > 0;
   }
+}
+
+function jsspecialchars($str) {
+  return str_replace(
+    ["'",   "\"",   "`",   "\r", "\n"],
+    ["\\'", "\\\"", "\\'", "",   "\\n \\\n"],
+    $str
+  );
 }

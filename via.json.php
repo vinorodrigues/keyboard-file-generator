@@ -13,7 +13,7 @@ if (!$is_inline) {
   if (!isset($data) || empty($data)) go_to_die();
   
   header('Content-Type: application/json');
-  header('Content-Disposition: attachment; filename="' . ($is_vial ? 'vial' : 'kb') . '.json"');
+  header('Content-Disposition: attachment; filename="via' . ($is_vial ? 'l' : '') . '.json"');
 }
 
 if (isset($data[0]['?'])) {  // max co-ordinates
@@ -31,8 +31,8 @@ $has_led = count_led_keys($data, false);
 if (!$is_vial) {
 ?>
     "name":"<?= __($meta['name']) ?>",
-    "vendorId":"0x<?= __($meta['vid']) ?>",
-    "productId":"0x<?= __($meta['pid']) ?>",
+    "vendorId":"0x<?= __($meta['vid'], 4, '0', STR_PAD_LEFT) ?>",
+    "productId":"0x<?= __($meta['pid'], 4, '0', STR_PAD_LEFT ) ?>"
 <?php
   if ($has_led) {
 ?>
@@ -40,7 +40,8 @@ if (!$is_vial) {
         "extends":"qmk_rgblight",
         "supportedLightingValues": [128, 129, 130, 131],
         "underglowEffects": [
-            ["00. None", 0]
+            ["00. None", 0],
+            ["01. Solid Color", 1]
         ]
     },
 <?php
@@ -50,12 +51,6 @@ if (!$is_vial) {
     "matrix":{ "rows":<?= __($m_rows) ?>, "cols":<?= __($m_cols) ?> },
     "layouts":{
         "keymap":[<?php
-
-// [{"c":"#777777"},"0,0",{"c":"#cccccc"},"0,1","0,2","0,3","0,4","0,5","0,6","0,7","0,8","0,9","0,10","0,11","0,12",{"c":"#aaaaaa","w":2},"0,13"],
-// [{"w":1.5},"1,0",{"c":"#cccccc"},"1,1","1,2","1,3","1,4","1,5","1,6","1,7","1,8","1,9","1,10","1,11","1,12",{"c":"#aaaaaa","w":1.5},"1,13"],
-// [{"w":1.75},"2,0",{"c":"#cccccc"},"2,1","2,2","2,3","2,4","2,5","2,6","2,7","2,8","2,9","2,10","2,11",{"c":"#777777","w":2.25},"2,12"],
-// [{"c":"#aaaaaa","w":2.25},"3,0",{"c":"#cccccc"},"3,2","3,3","3,4","3,5","3,6","3,7","3,8","3,9","3,10","3,11",{"c":"#aaaaaa","w":2.75},"3,12"],
-// [{"w":1.25},"4,0",{"w":1.25},"4,1",{"w":1.25},"4,2",{"w":6.25},"4,6",{"w":1.25},"4,10",{"w":1.25},"4,11",{"w":1.25},"4,12",{"w":1.25},"4,13"]
 
 // $cnt = 0;
 $row = -1;

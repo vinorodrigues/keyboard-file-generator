@@ -20,6 +20,8 @@ if (isset($data[0]['?'])) {  // max co-ordinates
   $m_rows = $data[0]['?'][1];
 }
 
+// @see: https://docs.qmk.fm/#/reference_info_json 
+
 ?>
 {
     "manufacturer": "<?= __($meta['manuf']) ?>",
@@ -42,9 +44,9 @@ if (isset($data[0]['?'])) {  // max co-ordinates
     "processor": "??",
     "url": "<?= __($meta['url']) ?>",
     "usb": {
-        "vid": "0x<?= __($meta['vid']) ?>",
-        "pid": "0x<?= __($meta['pid']) ?>",
-        "device_version": "<?= __($meta['vmaj']) ?>.<?= __($meta['vmin']) ?>.<?= __($meta['vrel']) ?>"
+        "vid": "0x<?= __($meta['vid'], 4, '0', STR_PAD_LEFT) ?>",
+        "pid": "0x<?= __($meta['pid'], 4, '0', STR_PAD_LEFT) ?>",
+        "device_version": "<?= __(intval($meta['vmaj'])) ?>.<?= __(intval($meta['vmin'])) ?>.<?= __(intval($meta['vrel'])) ?>"
     },
     "layouts": {
         "LAYOUT_all": {
