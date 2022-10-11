@@ -119,7 +119,7 @@ foreach ($data as $item) {
     ' fill="' . $item['t'] . '"' .
     ' text-anchor="middle" alignment-baseline="middle"' .
     '>' .
-    htmlspecialchars($item['_'][7]) .
+    $item['_'][7] .
     '</text>';
 
   if (array_key_exists('e', $item)) {
@@ -135,7 +135,7 @@ foreach ($data as $item) {
         ' fill="' . $item['t'] . '"' .
         ' text-anchor="middle" alignment-baseline="middle" font-weight="bold"' .
         '>' .
-        htmlspecialchars($item['_'][3]) .
+        $item['_'][3] .
         '</text>';
     }
     if (!empty($item['_'][5])) {
@@ -150,7 +150,7 @@ foreach ($data as $item) {
         ' fill="' . $item['t'] . '"' .
         ' text-anchor="middle" alignment-baseline="middle" font-weight="bold"' .
         '>' .
-        htmlspecialchars($item['_'][5]) .
+        $item['_'][5] .
         '</text>';
     }
   }
