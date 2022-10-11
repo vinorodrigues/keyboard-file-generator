@@ -109,7 +109,7 @@ echo PHP_EOL . '  </g>';
 echo PHP_EOL . '  <g font-family="Helvetica" font-size="48" font-weight="normal">';
 foreach ($data as $item) {
 
-  $ofs = array_key_exists('e', $item) ? (-DELTA) : 0;
+  $ofs = array_key_exists('e', $item) ? 0 : HALFD;
   $_x = ($item['x'] * LEN_1U) + ((LEN_1U * $item['w']) / 2);
   $_y = ($item['y'] * LEN_1U) + ((LEN_1U * $item['h']) / 2) - $ofs;
   echo PHP_EOL . '    <text' . 

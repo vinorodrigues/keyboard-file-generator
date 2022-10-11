@@ -20,6 +20,7 @@ The format of this data is dependant on the location of the text, and that can b
 *Where:*
 
 * **-0-** The matrix coordinates in the format of `{row},{column}`. e.g. `3,13` = 4th row *(starting at 0)*, 14th column.
+* **-2-** The QMK keycode constant, e.g. `KC_ENT` for the Enter key
 * **-3-** *The text to show in the image for counter clockwise rotation of the rotary encoder.*
 * **-4-** *An "e" character here representing a rotary encoder if appropriate.*
 * **-5-** *The text to show in the image for lockwise rotation of the rotary encoder.*
@@ -28,4 +29,12 @@ The format of this data is dependant on the location of the text, and that can b
 
 * all others are ignored
 
-***Note:***: The tool has very minimal error handling - so if you're doing something wrong it will likely not tell you what it is.
+<img src="./kle_example.png" width="142" height="76" >
+
+In the above example:
+* Key Matrix position is ***Row 3***, ***Col 13*** *(zero offset)*
+* Keycode constant is `KC_ENT`
+* Text for the image is "***Enter***"
+* LED index is ***65*** *(zero offset)*
+
+***Note:***: The tool has very minimal error handling - so if you're doing something wrong it will likely not tell you what it is. Generally, the "garbage in, garbage out" rule applies.

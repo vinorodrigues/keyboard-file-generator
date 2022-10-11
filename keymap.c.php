@@ -19,28 +19,51 @@ if (!$is_inline) {
 //   $m_rows = $data[0]['?'][1];
 // }
 
-function generate_keymap_out(&$data, $default_key_text) {
-  $runx = 0;
+function trim_to_last($string, $substr) {
+  $p = strrpos($string, $substr);
+  if ($p !== false) {
+    return substr($string, 0, $p);
+  } else {
+    return $string;
+  }
+}
+
+function get_keymap_output(&$data, $default_key_text, $do_guess = false) {
+  $ret = '';
+
+  if ($do_guess) 
+    $guess = json_decode(file_get_contents('guess.json'), true);
+
   $cnt = 0;
+  $runx = 0;
   foreach ($data as $item) {
     if (!array_key_exists('x', $item) || !array_key_exists('y', $item)) {
       // no x & y, ignore
     } elseif (array_key_exists('d', $item) && $item['d']) {
       // it's a decal, ignore and continue
     } else {
-      if ($cnt > 0) echo ',';
       if ($item['x'] <= $runx) {
-        echo PHP_EOL . _t(2);
+        $ret .= PHP_EOL . _t(2);
         $runx = 0;
       } else {
         $runx = $item['x'];
-        if ($cnt > 0) echo ' ';
+        if ($cnt > 0) $ret .= ' ';
       }
-      echo $default_key_text;
+ 
+      $s = $do_guess ? $item['_'][2] : '';
+      if (_empty($s)) {
+        $s = $item['_'][7];
+        if ($do_guess && is_array($guess) && array_key_exists($s, $guess)) {
+          $s = $guess[$s];
+        } else {
+          $s = $default_key_text;
+        }
+      }
+      $ret .= str_pad($s . ',', 8);
     }
     $cnt++;
   }
-  echo PHP_EOL;
+  return trim_to_last($ret, ',') . PHP_EOL;
 }
 
 ?>
@@ -51,25 +74,26 @@ function generate_keymap_out(&$data, $default_key_text) {
 #include "keymaps.h"
 
 enum {
-    LYR_0,
-    LYR_1,
-    LYR_2,
-    LYR_3
+    _L0,
+    _L1,
+    _L2,
+    _L3
 };
 
 #define XXXXXXX KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [LYR_0] = LAYOUT_all(<?php generate_keymap_out($data, 'XXXXXXX') ?>
+    // TODO: Replace any XXXXXXXX with actual key codes
+    [_L0] = LAYOUT_all(<?= get_keymap_output($data, 'XXXXXXX', true) ?>
     ),
 
-    [LYR_1] = LAYOUT_all(<?php generate_keymap_out($data, '_______') ?>
+    [_L1] = LAYOUT_all(<?= get_keymap_output($data, '_______') ?>
     ),
 
-    [LYR_2] = LAYOUT_all(<?php generate_keymap_out($data, '_______') ?>
+    [_L2] = LAYOUT_all(<?= get_keymap_output($data, '_______') ?>
     ),
 
-    [LYR_3] = LAYOUT_all(<?php generate_keymap_out($data, '_______') ?>
+    [_L3] = LAYOUT_all(<?= get_keymap_output($data, '_______') ?>
     )
 };
 
