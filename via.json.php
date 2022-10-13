@@ -32,7 +32,7 @@ if (!$is_vial) {
 ?>
     "name":"<?= __($meta['name']) ?>",
     "vendorId":"0x<?= __($meta['vid'], 4, '0', STR_PAD_LEFT) ?>",
-    "productId":"0x<?= __($meta['pid'], 4, '0', STR_PAD_LEFT ) ?>"
+    "productId":"0x<?= __($meta['pid'], 4, '0', STR_PAD_LEFT ) ?>",
 <?php
   if ($has_led) {
 ?>
@@ -44,6 +44,10 @@ if (!$is_vial) {
             ["01. Solid Color", 1]
         ]
     },
+<?php
+  } else {
+?>
+    "lighting": "none",
 <?php
   }
 }
