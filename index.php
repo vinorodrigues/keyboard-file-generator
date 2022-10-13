@@ -43,7 +43,7 @@ $has_data = (isset($data) && !empty($data));
     <title>Keyboard File Generator</title>
 
     <style>
-      .svg {
+      img, svg {
         max-width: 100% !important;
         height: auto !important;
       }

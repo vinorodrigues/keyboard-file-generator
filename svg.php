@@ -33,10 +33,6 @@ if (isset($data[0]['>'])) {  // max co-ordinates
   $maxy = $data[0]['>'][1];
 } else {
   $maxx = $maxy = 0.0;
-  foreach ($data as $item) {
-    if ($item['x'] > $maxx) $maxx = $item['x'];
-    if ($item['y'] > $maxy) $maxy = $item['y'];
-  }
 }
 
 echo '<svg';

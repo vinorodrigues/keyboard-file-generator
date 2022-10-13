@@ -120,8 +120,8 @@ function process_data($input) {
           $pos_x += $move_x;
           $pos_y += $move_y;
 
-          $item['x'] = $pos_x;  $max_x = max($max_x, $pos_x);  $min_x = min($min_x, $pos_x);
-          $item['y'] = $pos_y;  $max_y = max($max_y, $pos_y);  $min_y = min($min_y, $pos_y);
+          $item['x'] = $pos_x;  $max_x = max($max_x, $pos_x + $width - 1);  $min_x = min($min_x, $pos_x);
+          $item['y'] = $pos_y;  $max_y = max($max_y, $pos_y + $height - 1);  $min_y = min($min_y, $pos_y);
 
           $item['c'] = $color;
           $item['t'] = $text;
