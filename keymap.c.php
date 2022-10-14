@@ -71,7 +71,6 @@ function get_keymap_output(&$data, $default_key_text, $do_guess = false) {
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include "keymaps.h"
 
 enum {
     _L0,

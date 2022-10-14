@@ -38,3 +38,5 @@ In the above example:
 * LED index is ***65*** *(zero offset)*
 
 ***Note:***: The tool has very minimal error handling - so if you're doing something wrong it will likely not tell you what it is. Generally, the "garbage in, garbage out" rule applies.
+
+***Note***: Read [these](https://docs.qmk.fm/#/reference_configurator_support?id=issues-and-hazards) hints about layout workarounds like ISO enter and vertical offset keys on the QMK docs site.
