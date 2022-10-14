@@ -29,6 +29,7 @@ $has_led = count_led_keys($data, false);
 {
 <?php
 if (!$is_vial) {
+  // *** VIA ONLY ***
 ?>
     "name":"<?= __($meta['name']) ?>",
     "vendorId":"0x<?= __($meta['vid'], 4, '0', STR_PAD_LEFT) ?>",
@@ -50,6 +51,11 @@ if (!$is_vial) {
     "lighting": "none",
 <?php
   }
+} else {
+  // *** Vial ONLY ***
+  ?>
+  "lighting": "none",
+<?php
 }
 ?>
     "matrix":{ "rows":<?= __($m_rows) ?>, "cols":<?= __($m_cols) ?> },
