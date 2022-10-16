@@ -237,8 +237,8 @@ if ((isset($_REQUEST['data']) && !empty($_REQUEST['data'])) && (isset($_REQUEST[
   // var_dump($raw);
 
   $raw = str_replace(
-    ['a:', 'c:', 'x:', 'y:', 'w:', 'h:', 'd:', 'n:', '\n', ':true', ':false'],
-    ['"a":', '"c":', '"x":', '"y":', '"w":', '"h":', '"d":', '"n":', MARKER, ':1', ':0'],
+    ['a:',   'c:',   'x:',   'y:',   'w:',   'h2:',   'x2:',   'y2:',   'w2:',   'h:',   'd:',   'n:',   '\n',   ':true', ':false'],
+    ['"a":', '"c":', '"x":', '"y":', '"w":', '"h2":', '"x2":', '"y2":', '"w2":', '"h":', '"d":', '"n":', MARKER, ':1',    ':0'],
     $raw
   );
   
