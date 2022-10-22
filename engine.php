@@ -26,7 +26,7 @@ function process_data($input) {
   $a = 4;
   $cnt = 0;
   $idy = 0;
-  $color = '#000000';
+  $color = '#cccccc';
   $text = '#000000';
   $m_rows = $m_cols = $max_x = $max_y = 0;
   $min_x = $min_y = 9999;
@@ -237,14 +237,14 @@ if ((isset($_REQUEST['data']) && !empty($_REQUEST['data'])) && (isset($_REQUEST[
   // var_dump($raw);
 
   $raw = str_replace(
-    ['a:',   'c:',   'x:',   'y:',   'w:',   'h2:',   'x2:',   'y2:',   'w2:',   'h:',   'd:',   'n:',   '\n',   ':true', ':false'],
-    ['"a":', '"c":', '"x":', '"y":', '"w":', '"h2":', '"x2":', '"y2":', '"w2":', '"h":', '"d":', '"n":', MARKER, ':1',    ':0'],
+    ["/n", 'a:',   'c:',   'x:',   'y:',   'w:',   'h2:',   'x2:',   'y2:',   'w2:',   'h:',   'd:',   '\n',   ':true', ':false'],
+    ['',   '"a":', '"c":', '"x":', '"y":', '"w":', '"h2":', '"x2":', '"y2":', '"w2":', '"h":', '"d":',  MARKER, ':1',    ':0'],
     $raw
   );
   
-  // echo '<code><pre>';
-  // var_dump($raw);
-  // echo '</pre></code>';
+  echo '<code><pre>';
+  var_dump($raw);
+  echo '</pre></code>';
 
   // echo '<hr>';
 
